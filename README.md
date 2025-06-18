@@ -1,59 +1,31 @@
-# AppExercise
+||	Taller Angular 1	||
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+#  Descripción de actividades del taller
 
-## Development server
+###  **Actividad 1: Two-Way Binding (Análisis de texto en tiempo real)**
 
-To start a local development server, run:
+- Se creó el componente `HijoComponent` (dentro de `components/hijo`).
+- En este componente inicialmente se agregó un `<input>` de texto.
+- Se aplicó **two-way binding** con `[(ngModel)]` para capturar el texto en tiempo real.
+- Cada vez que el usuario escribe:
+  - Se determina si el texto es un palíndromo.
+  - Se cuenta la cantidad de vocales.
+  - Ambas informaciones se muestran inmediatamente debajo del input.
 
-```bash
-ng serve
-```
+###  **Actividad 2: Comunicación Padre → Hijo con `@Input()`**
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Se creó el componente `PadreComponent` (dentro de `components/padre`).
+- El `input` ahora está en el padre.
+- El valor del input en el padre se envía al hijo mediante `@Input()`.
+- El hijo ya no tiene su propio input. Solo recibe el texto desde el padre y realiza:
+  - Evaluación de palíndromo.
+  - Conteo de vocales.
+- Toda la lógica de análisis permanece encapsulada en el hijo.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+###  **Actividad 3: Comunicación Hijo → Padre con `@Output()`**
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Se agregó un `EventEmitter` decorado con `@Output()` en el `HijoComponent`.
+- Cada vez que el texto recibido es un palíndromo, el hijo emite un evento al padre.
+- El padre escucha este evento y muestra un mensaje de confirmación
