@@ -1,0 +1,10 @@
+<div>
+    <h2>Analizador de Texto</h2>
+    <input type="text" [(ngModel)]=" texto" placeholder="Ingrese un texto"/>
+
+    <app-hijo [texto] = "texto" (palindromoDetectado)="manejarEventoPalindromo()"></app-hijo>
+
+    @if (mostrarMensaje){
+        <p>el Hijo detecto un palíndromo</p>
+    }
+</div>
